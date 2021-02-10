@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FileKita } from './filekita.entity'
+import { FilekitaEntity } from './filekita.entity'
 import { FilekitaDTO } from './filekita.dto'
 
 @Injectable()
 export class FilekitaService {
     constructor(
-        @InjectRepository(FileKita)
-        private filekitaRepository: Repository<FileKita>
+        @InjectRepository(FilekitaEntity)
+        private filekitaRepository: Repository<FilekitaEntity>
     ) { }
 
     async showAll() {

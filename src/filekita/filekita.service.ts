@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FilekitaEntity } from './filekita.entity'
+import { FileKita } from './filekita.entity'
 import { FilekitaDTO } from './filekita.dto'
 
 @Injectable()
 export class FilekitaService {
     constructor(
-        @InjectRepository(FilekitaEntity)
-        private filekitaRepository: Repository<FilekitaEntity>
+        @InjectRepository(FileKita)
+        private filekitaRepository: Repository<FileKita>
     ) { }
 
     async showAll() {
@@ -24,6 +24,20 @@ export class FilekitaService {
 
     async lihatSemua() {
         return "ini di service";
+    }
+
+    async lihatPerRecord(id: string) {
+        return await this.filekitaRepository.findOne({ where: { id } })
+    }
+
+    async update(id: string, data: Partial<FilekitaDTO>) {
+        await this.filekitaRepository.update({ id }, data);
+        return await this.filekitaRepository.findOne({ where: { id } })
+    }
+
+    async hapusData(id: string) {
+        await this.filekitaRepository.delete({ id })
+        return { deteled: true }
     }
 
 }

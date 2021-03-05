@@ -1,7 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class FilekitaEntity {
+export class FileKita {
     @PrimaryGeneratedColumn()
     id: number;
 

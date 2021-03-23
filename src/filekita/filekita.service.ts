@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FileKita } from './filekita.entity'
+import { FileKita } from './filekita.entity.js'
 import { FilekitaDTO } from './filekita.dto'
 
 @Injectable()

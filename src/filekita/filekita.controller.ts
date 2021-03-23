@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Render } from '@nestjs/common';
 import { FilekitaService } from './filekita.service'
 import { FilekitaDTO } from './filekita.dto'
 
@@ -6,9 +6,15 @@ import { FilekitaDTO } from './filekita.dto'
 export class FilekitaController {
     constructor(private FilekitaService: FilekitaService) { }
 
+    @Get('jsondata')
+    async lihatOutput() {
+        return { data: await this.FilekitaService.showAll() };
+    }
+
     @Get()
-    lihatOutput() {
-        return this.FilekitaService.showAll();
+    @Render('filekita/index')
+    root() {
+        return { message: 'Hai Sang juara', title: 'Index Filekita' };
     }
 
     @Post()

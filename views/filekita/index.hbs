@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+
+<body>
+    {{ message }}
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>deskripsi</th>
+                <th>isPublik.</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>deskripsi</th>
+                <th>isPublik.</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "ajax": 'jsondata',
+                "columns": [
+                    { "data": "id" },
+                    { "data": "nama" },
+                    { "data": "deskripsi" },
+                    { "data": "isPublik" },
+                ]
+            });
+        });
+    </script>
+
+</body>
+
+</html>
